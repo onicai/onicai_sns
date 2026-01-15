@@ -153,6 +153,9 @@ fallback_controller_principals:
 # create an SNS is adopted (usually this is required even earlier, e.g., to
 # convince NNS neurons to vote in favor of your proposal).
 dapp_canisters:
+    # Initial decentralization swap allows up to 25 canisters
+    # Canisters with comment '# post-SNS' will be added afterwards via governance proposals
+    #
     # ----------------------------------------
     # funnAI
     #
@@ -184,43 +187,43 @@ dapp_canisters:
     - vofho-bqaaa-aaaac-qalyq-cai
     # funnAI Judge LLMs (16)
     - vahkg-2aaaa-aaaac-qalzq-cai
-    - vva3l-3iaaa-aaaac-qal2a-cai
-    - kg5kw-bqaaa-aaaam-aeltq-cai
-    - lltoy-oyaaa-aaaam-aelua-cai
-    - ouoa7-paaaa-aaaah-arfwq-cai
-    - o5nld-ziaaa-aaaah-arfxa-cai
-    - o2mnx-uqaaa-aaaah-arfxq-cai
-    - v7zwd-iqaaa-aaaad-aapqa-cai
-    - vyyqx-fiaaa-aaaad-aapqq-cai
-    - vr33l-taaaa-aaaad-aapra-cai
-    - vl3dc-4yaaa-aaaaj-qnpwq-cai
-    - vcyi6-kqaaa-aaaaj-qnpxa-cai
-    - vfzok-hiaaa-aaaaj-qnpxq-cai
-    - nnrl2-3iaaa-aaaai-atkjq-cai
-    - nyw2x-2aaaa-aaaai-atkka-cai
-    - n7x4d-xyaaa-aaaai-atkkq-cai
+    # post-SNS - vva3l-3iaaa-aaaac-qal2a-cai
+    # post-SNS - kg5kw-bqaaa-aaaam-aeltq-cai
+    # post-SNS - lltoy-oyaaa-aaaam-aelua-cai
+    # post-SNS - ouoa7-paaaa-aaaah-arfwq-cai
+    # post-SNS - o5nld-ziaaa-aaaah-arfxa-cai
+    # post-SNS - o2mnx-uqaaa-aaaah-arfxq-cai
+    # post-SNS - v7zwd-iqaaa-aaaad-aapqa-cai
+    # post-SNS - vyyqx-fiaaa-aaaad-aapqq-cai
+    # post-SNS - vr33l-taaaa-aaaad-aapra-cai
+    # post-SNS - vl3dc-4yaaa-aaaaj-qnpwq-cai
+    # post-SNS - vcyi6-kqaaa-aaaaj-qnpxa-cai
+    # post-SNS - vfzok-hiaaa-aaaaj-qnpxq-cai
+    # post-SNS - nnrl2-3iaaa-aaaai-atkjq-cai
+    # post-SNS - nyw2x-2aaaa-aaaai-atkka-cai
+    # post-SNS - n7x4d-xyaaa-aaaai-atkkq-cai
     # funnAI mAIner ShareService LLMs (13)
     - 4yuew-ziaaa-aaaag-auc7a-cai
-    - 47vcc-uqaaa-aaaag-auc7q-cai
-    - xbdq4-pyaaa-aaaag-audaa-cai
-    - 6eiml-cqaaa-aaaai-q3yna-cai
-    - 6djk7-piaaa-aaaai-q3ynq-cai
-    - 6wo3s-oaaaa-aaaai-q3yoa-cai
-    - tiw5l-siaaa-aaaac-awb2q-cai
-    - sl2un-gqaaa-aaaac-awb4a-cai
-    - sm3sz-liaaa-aaaac-awb4q-cai
-    - ipvn5-tqaaa-aaaan-qz4ra-cai
-    - iiulj-6iaaa-aaaan-qz4rq-cai
-    - i5t2e-7aaaa-aaaan-qz4sa-cai
-    - xgcwi-caaaa-aaaag-audaq-cai
+    # post-SNS - 47vcc-uqaaa-aaaag-auc7q-cai
+    # post-SNS - xbdq4-pyaaa-aaaag-audaa-cai
+    # post-SNS - 6eiml-cqaaa-aaaai-q3yna-cai
+    # post-SNS - 6djk7-piaaa-aaaai-q3ynq-cai
+    # post-SNS - 6wo3s-oaaaa-aaaai-q3yoa-cai
+    # post-SNS - tiw5l-siaaa-aaaac-awb2q-cai
+    # post-SNS - sl2un-gqaaa-aaaac-awb4a-cai
+    # post-SNS - sm3sz-liaaa-aaaac-awb4q-cai
+    # post-SNS - ipvn5-tqaaa-aaaan-qz4ra-cai
+    # post-SNS - iiulj-6iaaa-aaaan-qz4rq-cai
+    # post-SNS - i5t2e-7aaaa-aaaan-qz4sa-cai
+    # post-SNS - xgcwi-caaaa-aaaag-audaq-cai
     #
     # ----------------------------------------
     # Manifesto for Decentralized AI (DeAI)
     #
     # frontend
-    - vexj4-tiaaa-aaaan-qzn7a-cai
+    # post-SNS - vexj4-tiaaa-aaaan-qzn7a-cai
     # backend
-    - xjbiw-iyaaa-aaaak-qlrva-cai
+    # post-SNS - xjbiw-iyaaa-aaaak-qlrva-cai
     #
     # ----------------------------------------
     # IConfucius
@@ -246,11 +249,11 @@ dapp_canisters:
     # frontend
     - 4v3v2-lyaaa-aaaag-abzna-cai
     # backend llama2.c loaded with tinyStories llama2_260K model
-    - otmmw-3yaaa-aaaag-ab2na-cai
+    # post-SNS - otmmw-3yaaa-aaaag-ab2na-cai
     # backend llama2.c loaded with tinyStories llama2_15M model
-    - 4c4bn-daaaa-aaaag-abvcq-cai
+    # post-SNS - 4c4bn-daaaa-aaaag-abvcq-cai
     # backend llama2.c loaded with tinyStories llama2_42M model
-    - ounkc-waaaa-aaaag-ab2nq-cai
+    # post-SNS - ounkc-waaaa-aaaag-ab2nq-cai
     # backend llama_cpp_canister loaded with Qwen2.5 model
     - 6uwoh-vaaaa-aaaag-amema-cai
     #
@@ -259,24 +262,24 @@ dapp_canisters:
     # (Knowledge Foundation Hackathon Winner)
     #
     # frontend
-    - 6tht4-syaaa-aaaai-acriq-cai
+    # post-SNS - 6tht4-syaaa-aaaai-acriq-cai
     # Backend - Deploys on-chain AI agent
-    - 6ugvi-7aaaa-aaaai-acria-cai
+    # post-SNS - 6ugvi-7aaaa-aaaai-acria-cai
     # Backend - Deploys frontend for on-chain AI agent
-    - 4j33a-miaaa-aaaai-acrhq-cai
+    # post-SNS - 4j33a-miaaa-aaaai-acrhq-cai
     # Backend - Deploys the on-chain LLM + loads model file
-    - 4o25u-bqaaa-aaaai-acrha-cai
+    # post-SNS - 4o25u-bqaaa-aaaai-acrha-cai
     #
     # ----------------------------------------
     # Bitcoin Donation
     # (Knowledge Foundation Hackathon Winner)
     #
     # frontend
-    - 5rsod-ciaaa-aaaai-acrdq-cai
+    # post-SNS - 5rsod-ciaaa-aaaai-acrdq-cai
     # Backend - Donation Canister
-    - ekral-oiaaa-aaaag-acmda-cai
+    # post-SNS - ekral-oiaaa-aaaag-acmda-cai
     # Backend - Donation Tracking Canister
-    - fj5jn-2qaaa-aaaag-acmfq-cai
+    # post-SNS - fj5jn-2qaaa-aaaag-acmfq-cai
 
 # Configuration of SNS tokens in the SNS Ledger canister deployed as part
 # of the SNS.
