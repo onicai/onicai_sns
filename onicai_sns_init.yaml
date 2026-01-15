@@ -105,7 +105,7 @@ NnsProposal:
         * Minimum Participants: 100
         * Minimum Direct Participation: 80_000 ICP
         * Maximum Direct Participation: 300_000 ICP
-        * Minimum per Participant: 1 ICP
+        * Minimum per Participant: 10 ICP
         * Maximum per Participant: 20_000 ICP
         * Dissolve Delay Duration: 24 months
         * Dissolve Delay Bonus: 100%
