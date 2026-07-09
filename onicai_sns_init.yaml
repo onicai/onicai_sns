@@ -70,7 +70,10 @@ description: >
     application are fully preserved. The funnAI application continues mAIning,
     now minting ONICAI tokens instead of FUNNAI, following the exact same
     minting schedule. ONICAI has a hard cap of 21M tokens, becoming
-    deflationary through token burning once mAIning ends in 2033.
+    deflationary through token burning once mAIning ends in 2033. As part of
+    the launch, the SNS also seeds an ONICAI/ICP liquidity pool on ICPSwap: all
+    ICP raised in the decentralization swap is paired with ONICAI from the
+    treasury at the current FUNNAI price.
 
 
 # Path to the SNS Project logo on the local filesystem. The path is relative
