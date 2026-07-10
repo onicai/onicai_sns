@@ -64,9 +64,16 @@ name: onicai
 # This description is used on the ICP Dashboard
 # https://dashboard.internetcomputer.org/sns
 description: >
-    onicai is the premier Decentralized AI solutions developer house with a 
-    track record of technical breakthroughs, AI product releases, and 
-    successfully delivered projects.
+    This SNS decentralizes the funnAI application (https://funnai.onicai.com)
+    by handing it over to the onicai community. Existing FUNNAI token holders
+    migrate 1:1 to the ONICAI governance token, and all features of the funnAI
+    application are fully preserved. The funnAI application continues mAIning,
+    now minting ONICAI tokens instead of FUNNAI, following the exact same
+    minting schedule. ONICAI has a hard cap of 21M tokens, becoming
+    deflationary through token burning once mAIning ends in 2033. As part of
+    the launch, the SNS also seeds an ONICAI/ICP liquidity pool on ICPSwap: all
+    ICP raised in the decentralization swap is paired with ONICAI from the
+    treasury at the current FUNNAI price.
 
 
 # Path to the SNS Project logo on the local filesystem. The path is relative
@@ -78,63 +85,70 @@ logo: onicai-icon-logo.png
 
 # URL that represents the SNS, usually a dapp controlled by the SNS project.
 # Must be a string from 10 to 512 bytes, and the domain must be HTTPS.
-url: https://www.onicai.com
+url: https://funnai.onicai.com
 
 # Metadata for the NNS proposal required to create the SNS. This data will be
 # shown only in the NNS proposal.
 NnsProposal:
     # The title of the NNS proposal. Must be a string of 4 to 256 bytes.
-    title: "NNS Proposal to create a SNS named 'onicai'"
+    title: "Decentralize the funnAI application to the onicai SNS and seed an ONICAI/ICP liquidity pool"
 
     # The HTTPS address of a forum post with additional context required to evaluate the NNS
     # proposal.
     # This will go in the `url` field of the proposal.
     # Must be a string of 10 to 2,048 bytes.
     # The protocol must be HTTPS, and the domain must be forum.dfinity.org.
+    # TODO: create a new forum thread and paste its URL here.
     url: "https://forum.dfinity.org/t/upcoming-onicai-sns-decentralization-swap/61361"
 
     # The description of the proposal. Must be a string of 10 to 2,000 bytes.
+    # TODO before submission: update the forum-post and whitepaper links, and
+    # refresh any figures once the FUNNAI snapshot is final.
     summary: |
         ## onicai SNS
-        Proposal to create the onicai SNS.
+        This SNS decentralizes the funnAI application (https://funnai.onicai.com)
+        by handing it to the onicai community. Existing FUNNAI holders migrate
+        1:1 to the ONICAI governance token; all funnAI features are preserved,
+        and the application keeps mAIning ONICAI on the same schedule. ONICAI
+        has a 21M hard cap and becomes deflationary via burns once mAIning ends
+        in 2033.
 
-        ## Decentralization Sale Parameters
-        * Total Token Supply: 52.5 Million ONICAI of which 21M mined via funnAI Protocol
-        * Ledger Transaction Fee: 0.001 ONICAI
-        * Proposal Rejection Fee: 1_000 ONICAI Tokens
-        * Minimum Participants: 100
-        * Minimum Direct Participation: 80_000 ICP
-        * Maximum Direct Participation: 300_000 ICP
-        * Minimum per Participant: 10 ICP
-        * Maximum per Participant: 20_000 ICP
-        * Dissolve Delay Duration: 24 months
-        * Dissolve Delay Bonus: 100%
-        * Neuron Age Duration: 12 months
-        * Neuron Age Bonus: 25%
-        * Initial Reward Rate: 4%
-        * Final Reward Rate: 0%
-        * Reward Rate Transition Duration: 4 years
-        * Participant Vesting Schedule: 8 events at 3 month intervals
-        * Developer Neurons: 20
-        * Advisor Neurons: 24
-        * Neurons Fund participation: No
+        ## Token
+        * Total supply: 21,000,000 ONICAI (hard cap)
+        * Transaction fee: 0.1 ONICAI
+        * Proposal rejection fee: 1,000 ONICAI
+        * Neurons' Fund participation: No
 
-        ## Token Allocation at SNS Genesis
-        * Decentralization swap: 25%
-        * Developer Neurons: 13.5%
-        * Advisor (Outlier Ventures): 2%
-        * SNS treasury: 59.5%
+        ## Decentralization Swap & Liquidity Pool Generation
+        * The swap sells 315,000 ONICAI for ICP; participants receive vested
+          ONICAI neurons
+        * All ICP raised is paired with treasury ONICAI into an ONICAI/ICP
+          liquidity pool on ICPSwap, at the current FUNNAI price
+        * No lower bound on ICP, so the swap cannot fail on a minimum
 
-        ## Additional Proposals Planned Post-Genesis
-        The following allocations will be decided upon by the SNS after genesis:
-        * Liquidity Pool: 1% = 525K ONICAI Tokens (matched with 3,200-12,000 ICP depending on participation)
-        * funnAI Protocol: 21M ONICAI tokens
-        * Remaining in Treasury: 9.7M ONICAI tokens
+        ## Voting
+        * Dissolve delay: min 1 month; bonus 0% (holding, not locking, is rewarded)
+        * Age bonus 100% over 4 years; voting reward rate 0% (no ONICAI inflation)
+
+        ## Genesis Allocation (21M ONICAI)
+        * Team neurons: 315,000 (each member's 1:1 swap of pledged FUNNAI, burned)
+        * Decentralization swap: 315,000
+        * SNS treasury: 20,370,000
+
+        The Advisor and swap tokens come from the Scheduled - Minted FUNNAI (the
+        protocol is running behind schedule) plus the FUNNAI held by the funnAI
+        treasury. See https://myfunnai.app/supply
+
+        ## Post-Genesis Distribution (via SNS proposals)
+        The complete treasury is distributed after genesis: an amount matching
+        the burned FUNNAI is burned; ONICAI is paired with the raised ICP to
+        seed the liquidity pool; the advisor's 420,000 is delivered; the
+        circulating amount is sent to the redemption canister for 1:1 holder
+        swaps; and the remainder funds mAIning rewards via the funnAI GameState
+        canister.
 
         ## Learn more
-        * [onicai SNS Whitepaper](https://www.onicai.com/files/onicai_SNS_Whitepaper.pdf)
-        * [onicai SNS Forum Post](https://forum.dfinity.org/t/upcoming-onicai-sns-decentralization-swap/61361)
-        * [onicai on OpenChat](https://oc.app/community/mepna-eqaaa-aaaar-bclua-cai/channel/2881126157/?ref=6e3y2-4yaaa-aaaaf-araya-cai)
+        * [onicai on OpenChat](https://oc.app/community/mepna-eqaaa-aaaar-bclua-cai/channel/2881126157)
         * [onicai on X](https://x.com/onicaiHQ)
         * [onicai on Github](https://github.com/onicai)
 
@@ -153,8 +167,8 @@ fallback_controller_principals:
 # create an SNS is adopted (usually this is required even earlier, e.g., to
 # convince NNS neurons to vote in favor of your proposal).
 dapp_canisters:
-    # Initial decentralization swap allows up to 25 canisters
-    # Canisters with comment '# post-SNS' will be added afterwards via governance proposals
+    # The SNS decentralizes the funnAI application (funnAI app + Protocol +
+    # mAIner/Judge/Challenger LLM canisters) -- 21 canisters total.
     #
     # ----------------------------------------
     # funnAI
@@ -163,6 +177,8 @@ dapp_canisters:
     - vizih-uiaaa-aaaaa-qavaa-cai
     # funnAI Backend
     - 6wp2z-paaaa-aaaaa-qau7q-cai
+    # TODO: confirm the FUNNAI token ledger & index canisters should be placed
+    # under SNS control (vs. wound down after the 1:1 migration to ONICAI).
     # FUNNAI TokenLedger
     - vpyot-zqaaa-aaaaa-qavaq-cai
     # FUNNAI TokenIndex
@@ -184,102 +200,17 @@ dapp_canisters:
     # funnAI Protocol MainerCreator
     - r2n3m-oqaaa-aaaaa-qanaq-cai
     # funnAI Challenger LLM (1)
-    - vofho-bqaaa-aaaac-qalyq-cai
-    # funnAI Judge LLMs (16)
-    - vahkg-2aaaa-aaaac-qalzq-cai
-    - vva3l-3iaaa-aaaac-qal2a-cai
-    - kg5kw-bqaaa-aaaam-aeltq-cai
-    - lltoy-oyaaa-aaaam-aelua-cai
-    - ouoa7-paaaa-aaaah-arfwq-cai
-    - o5nld-ziaaa-aaaah-arfxa-cai
-    - o2mnx-uqaaa-aaaah-arfxq-cai
-    - v7zwd-iqaaa-aaaad-aapqa-cai
-    - vyyqx-fiaaa-aaaad-aapqq-cai
-    - vr33l-taaaa-aaaad-aapra-cai
-    - vl3dc-4yaaa-aaaaj-qnpwq-cai
-    - vcyi6-kqaaa-aaaaj-qnpxa-cai
-    - vfzok-hiaaa-aaaaj-qnpxq-cai
-    - nnrl2-3iaaa-aaaai-atkjq-cai
-    - nyw2x-2aaaa-aaaai-atkka-cai
-    - n7x4d-xyaaa-aaaai-atkkq-cai
-    # funnAI mAIner ShareService LLMs (13)
-    - 4yuew-ziaaa-aaaag-auc7a-cai
-    - 47vcc-uqaaa-aaaag-auc7q-cai
-    - xbdq4-pyaaa-aaaag-audaa-cai
-    - 6eiml-cqaaa-aaaai-q3yna-cai
-    - 6djk7-piaaa-aaaai-q3ynq-cai
-    - 6wo3s-oaaaa-aaaai-q3yoa-cai
-    - tiw5l-siaaa-aaaac-awb2q-cai
-    - sl2un-gqaaa-aaaac-awb4a-cai
-    - sm3sz-liaaa-aaaac-awb4q-cai
-    - ipvn5-tqaaa-aaaan-qz4ra-cai
-    - iiulj-6iaaa-aaaan-qz4rq-cai
-    - i5t2e-7aaaa-aaaan-qz4sa-cai
-    - xgcwi-caaaa-aaaag-audaq-cai
-    #
-    # ----------------------------------------
-    # Manifesto for Decentralized AI (DeAI)
-    #
-    # frontend
-    - vexj4-tiaaa-aaaan-qzn7a-cai
-    # backend
-    - xjbiw-iyaaa-aaaak-qlrva-cai
-    #
-    # ----------------------------------------
-    # IConfucius
-    #
-    # AI Agent control canister with public inference endpoints
-    - dpljb-diaaa-aaaaa-qafsq-cai
-    # backend llama_cpp_canister loaded with Qwen2.5 model
-    - dikpv-oqaaa-aaaaa-qafsa-cai
-    #
-    # ----------------------------------------
-    # DeVinci 
-    # (devinci.onicai.com)
-    #
-    # frontend for in browser chat using Web GPU
-    - x6occ-biaaa-aaaai-acqzq-cai
-    # backend to optionally store personal chat history
-    - xzpew-mqaaa-aaaai-acqza-cai
-    #
-    # ----------------------------------------
-    # ICGPT 
-    # (icgpt.onicai.com)
-    #
-    # frontend
-    - 4v3v2-lyaaa-aaaag-abzna-cai
-    # backend llama2.c loaded with tinyStories llama2_260K model
-    - otmmw-3yaaa-aaaag-ab2na-cai
-    # backend llama2.c loaded with tinyStories llama2_15M model
-    - 4c4bn-daaaa-aaaag-abvcq-cai
-    # backend llama2.c loaded with tinyStories llama2_42M model
-    - ounkc-waaaa-aaaag-ab2nq-cai
-    # backend llama_cpp_canister loaded with Qwen2.5 model
-    - 6uwoh-vaaaa-aaaag-amema-cai
-    #
-    # ----------------------------------------
-    # DeAIssemblyline
-    # (Knowledge Foundation Hackathon Winner)
-    #
-    # frontend
-    - 6tht4-syaaa-aaaai-acriq-cai
-    # Backend - Deploys on-chain AI agent
-    - 6ugvi-7aaaa-aaaai-acria-cai
-    # Backend - Deploys frontend for on-chain AI agent
-    - 4j33a-miaaa-aaaai-acrhq-cai
-    # Backend - Deploys the on-chain LLM + loads model file
-    - 4o25u-bqaaa-aaaai-acrha-cai
-    #
-    # ----------------------------------------
-    # Bitcoin Donation
-    # (Knowledge Foundation Hackathon Winner)
-    #
-    # frontend
-    - 5rsod-ciaaa-aaaai-acrdq-cai
-    # Backend - Donation Canister
-    - ekral-oiaaa-aaaag-acmda-cai
-    # Backend - Donation Tracking Canister
-    - fj5jn-2qaaa-aaaag-acmfq-cai
+    - psgg4-iqaaa-aaaac-qgtza-cai
+    # funnAI Judge LLMs (4)
+    - pvhai-fiaaa-aaaac-qgtzq-cai
+    - tem27-5yaaa-aaaam-ajawq-cai
+    - ftzot-hiaaa-aaaah-avtja-cai
+    - lk5m5-hqaaa-aaaad-agqwa-cai
+    # funnAI mAIner ShareService LLMs (4)
+    - q6xar-uyaaa-aaaag-ayxxq-cai
+    - k26rl-vqaaa-aaaai-rakcq-cai
+    - tb4fe-6qaaa-aaaac-be5tq-cai
+    - 6tx5a-raaaa-aaaan-q6hfa-cai
 
 # Configuration of SNS tokens in the SNS Ledger canister deployed as part
 # of the SNS.
@@ -293,7 +224,10 @@ Token:
     symbol: ONICAI
 
     # SNS ledger transaction fee.
-    transaction_fee: 100_000 e8s
+    # TODO: This transaction_fee is equal to 0.1 ONICAI, which is Lorimer's
+    # proposal (raise the tiny default fee, which is a ledger+index attack
+    # vector) -- to be confirmed by community consensus.
+    transaction_fee: 10_000_000 e8s
 
     # Path to the SNS token logo on your local filesystem. The path is relative
     # to the configuration file location, unless an absolute path is given.
@@ -312,6 +246,13 @@ Proposals:
     # may be increased during its lifecycle due to the wait-for-quiet algorithm
     # (see details below). This field is specified as a duration. For example
     # "4 days".
+    #
+    # TODO: Do NOT confuse this with the ">= 7-day execution delay for the first
+    # ~6 months" that Arthur (ArthurAlaska) proposed as an anti-early-capture
+    # measure. That delay is the time a *passed* proposal waits before it is
+    # executed -- a separate nervous-system parameter that is set via a
+    # post-genesis governance proposal, not here. The two fields below only
+    # govern how long a proposal stays *open for voting*.
     initial_voting_period: 4 days
 
     # The wait-for-quiet algorithm extends the voting period of a proposal when
@@ -359,6 +300,21 @@ Voting:
     # bonuses multiply each other, so the increase in voting power due to
     # the dissolve delay bonus is used in the equation to increase voting
     # power for the age bonus.
+    #
+    # DESIGN (TODO: confirm by community consensus). These bonuses implement the
+    # proposal from ArthurAlaska, who wrote verbatim:
+    #
+    #     "keep the locking period short (1 month tops), but the age bonus big"
+    #
+    # We translate that qualitative proposal into concrete parameters as follows:
+    #   - Do NOT reward locking up tokens: the DissolveDelay bonus is set to 0%,
+    #     and the minimum dissolve delay is kept short at 1 month. Holders never
+    #     have to lock their tokens away for years to have full voting weight.
+    #   - Instead, reward long-term holding: the Age bonus is set large (100%)
+    #     over a long duration (4 years). Age only accrues while a neuron is in
+    #     the non-dissolving state, so a holder can keep the short 1-month
+    #     dissolve delay yet still earn the full bonus purely by holding and
+    #     staking over years. Short lock, big age bonus -- exactly as proposed.
     MaximumVotingPowerBonuses:
         # Users with a higher dissolve delay are incentivized to take the
         # long-term interests of the SNS into consideration when voting. To
@@ -383,13 +339,23 @@ Voting:
             # This parameter sets the maximum dissolve delay a neuron can have.
             # When reached, the maximum dissolve delay bonus will be applied.
             # This field is specified as a duration. For example: "8 years".
+            # RATIONALE: this value is ALSO the hard cap on any neuron's dissolve
+            # delay (max_dissolve_delay_seconds), so it must be >= the longest
+            # dissolve delay used anywhere. The binding case is the swap neuron
+            # baskets (VestingSchedule 8 x 3mo needs (8-1)*3 = 21mo, and the SNS
+            # requires (count-1)*interval < max_dissolve_delay); the team genesis
+            # neurons use 9mo. We set 24 months to clear both. Because the bonus
+            # below is 0%, a longer cap grants NO voting-power reward -- the
+            # "short lock" intent (see DESIGN above) is preserved via bonus 0% +
+            # the 1-month minimum_dissolve_delay.
             duration: 24 months
             # If a neuron's dissolve delay is `duration`, its voting power will
-            # be increased by the dissolve delay `bonus` amount. 
-            # This field is specified as a percentage. For instance, 
+            # be increased by the dissolve delay `bonus` amount.
+            # This field is specified as a percentage. For instance,
             # a value of "100%" means that the voting power will be doubled
             # (multiplied by 2).
-            bonus: 100%
+            # Set to 0% -- we deliberately do not reward locking (see DESIGN above).
+            bonus: 0%
 
         # Users with neurons staked in the non-dissolving state for a long
         # period of time are incentivized to take the long-term interests of
@@ -416,13 +382,15 @@ Voting:
             # the maximum age bonus. Once this age is reached, the neuron will
             # continue to age, but no more bonus will be applied. This field
             # is specified as a duration. For example: "2 years".
-            duration: 12 months
+            duration: 4 years
             # If a neuron's age is `duration` or older, its voting power will be
-            # increased by this age`bonus` amount. 
-            # This field is specified as a percentage. For instance, 
+            # increased by this age`bonus` amount.
+            # This field is specified as a percentage. For instance,
             # a value of "25%" means that the voting power will increase by a quarter
             # (multiplied by 1.25).
-            bonus: 25%
+            # Set large -- a neuron aged 4 years has DOUBLE the voting power
+            # (see DESIGN above: "the age bonus big").
+            bonus: 100%
 
     # Configuration of SNS voting reward parameters.
     #
@@ -442,10 +410,17 @@ Voting:
     #
     # More details on SNS tokenomics can be found in the developer documentation:
     # https://internetcomputer.org/docs/current/developer-docs/integrations/sns/tokenomics/rewards/#voting-rewards
+    # No ONICAI voting rewards. ONICAI has a hard cap of 21M tokens, all of
+    # which are distributed to existing FUNNAI holders and the remainder
+    # rewarded to mAIners according to the funnAI minting schedule -- there is
+    # no token inflation to fund staking rewards. In the future, the community
+    # can decide via governance to funnel part of the application's ICP revenue
+    # to stakers, but that is for the community to decide, not something set at
+    # genesis.
     RewardRate:
         # The initial reward rate at which the SNS voting rewards will increase
         # per year. This field is specified as a percentage. For example: "15%".
-        initial: 4%
+        initial: 0%
 
         # The final reward rate at which the SNS voting rewards will increase
         # per year. This rate is reached after `transition_duration` and remains
@@ -473,7 +448,158 @@ Voting:
 #    - The Swap's initial balance (see group (3) above) must be greater than 0.
 #    - The Swap's initial balance (see group (3) above) must be greater than or
 #      equal to the sum of all developer tokens.
+#
+# NOTE on the third precondition above: it was removed from dfinity/ic master
+# (rs/sns/init/src/distributions.rs), BUT it is STILL ENFORCED by the released
+# tooling -- verified 2026-07 with `dfx sns init-config-file validate` on both
+# dfx 0.29.2 and 0.32.0, which reject a config where the developer tokens exceed
+# the swap. `dfx sns propose` builds the proposal through the same code path,
+# and mainnet SNS-W validates it again on execution, so this rule is effectively
+# BINDING. We satisfy it by keeping the only genesis (developer) neurons -- the
+# team -- at or below the swap amount: team 315_000 = swap 315_000. The advisor
+# (420_000) is delivered post-SNS, NOT as a genesis neuron, so it does not count
+# toward the developer total.
 Distribution:
+    # =========================================================================
+    # 21M ONICAI DISTRIBUTION + LIQUIDITY POOL GENERATION PLAN
+    #
+    # The full 21M ONICAI supply is minted at genesis:
+    #   - genesis neurons:
+    #       team    315_000  (4 x 78_750) -- each team member's 1:1 swap of
+    #                        78_750 FUNNAI (burned) for 78_750 ONICAI held as
+    #                        neurons (see the team neurons below). Set EQUAL to
+    #                        the swap so developer tokens <= swap (SNS rule above).
+    #   - swap:            315_000  (sold in the decentralization swap;
+    #                        participants receive VESTED ONICAI neuron baskets)
+    #   - treasury:        20_370_000  (everything else)
+    #   The advisor (420_000, 2% for Outlier Ventures) is NOT a genesis neuron;
+    #   it is delivered post-SNS from the treasury (see the sequence below).
+    # The treasury is then distributed entirely via post-genesis SNS proposals
+    # (see the sequence below). No new ONICAI is ever minted; "mAIning" going
+    # forward is distribution from the pre-minted reserve.
+    #
+    # LIQUIDITY POOL GENERATION EVENT (LPGE): besides decentralizing the app,
+    # this launch seeds an ONICAI/ICP liquidity pool on ICPSwap. The SNS does
+    # NOT create any DEX pool automatically -- the decentralization swap only
+    # collects ICP into the SNS treasury, and the DAO must seed the pool via a
+    # post-genesis proposal. So the ONICAI budget for this event is split:
+    #   - budget = 150_000 (funnAI treasury FUNNAI) + 900_000 (Scheduled minus
+    #     Minted; the protocol is behind schedule) - 420_000 (advisor) = 630_000
+    #   - SELL half, RESERVE half: to seed the pool at the SAME price the swap
+    #     sold at, the reserved ONICAI must equal the sold ONICAI (the price
+    #     cancels out), so 630_000 splits 315_000 / 315_000.
+    #     * swap sells 315_000 ONICAI -> raises 315_000 x 0.006241 ~= 1_966 ICP
+    #       (0.006241 = the fixed FUNNAI/ICP price, ~$0.0145; see PRE-SNS
+    #       step 1); the ICP lands in the SNS treasury.
+    #     * a post-genesis proposal pairs that ~1_966 ICP with 315_000 ONICAI
+    #       from the treasury into an ONICAI/ICP pool on ICPSwap, at 0.006241.
+    # WHY THE SWAP IS THIS SIZE AND CANNOT GROW: the swap, LP, and advisor
+    # tokens all come from the MINTING DEFICIT (Scheduled - Minted, ~900_000 --
+    # tokens the schedule expected to be mined by now but that were not) + the
+    # FUNNAI tokens held by the funnAI treasury (~150_000). A swap is only
+    # possible BECAUSE the protocol is behind schedule. The full pool is
+    # 900_000 + 150_000 = 1_050_000, exactly consumed by advisor 420_000 +
+    # swap 315_000 + LP 315_000. The swap CANNOT be enlarged: doing so would
+    # spend tokens owed to on-schedule mAIning and break the 21M minting
+    # schedule.
+    # Design notes:
+    #   - Voting power: the SNS rule (developer tokens <= swap, see the top of
+    #     this section) forces the team's genesis neurons (315_000) to be no
+    #     larger than the swap (315_000), so the team does NOT hold a raw genesis
+    #     voting-power majority. Steering the DAO relies on the community
+    #     FOLLOWING the team neuron (plus the 33% blocking rule) -- the intended
+    #     SNS model -- not on out-voting everyone by stake.
+    #   - No liquid ONICAI outside the treasury: swap participants receive
+    #     vested neuron baskets (not liquid), and the SNS itself seeds the pool
+    #     at the FUNNAI price, so no one can pre-create a mispriced pool.
+    #
+    # The current Minted, Burned and Circulating FUNNAI supply figures are live
+    # at:  https://myfunnai.app/supply
+    # Placeholder values below are today's snapshot (2026-07-09):
+    #   Minted      = 6_001_362 FUNNAI   (hard cap 21M; Scheduled ~6.9M)
+    #   Burned      =   439_011 FUNNAI   (7.3% of Minted)
+    #   Circulating = 5_562_352 FUNNAI   (Minted - Burned, rounded to whole tokens)
+    # TODO: refresh Minted / Burned / Circulating from myfunnai.app/supply at
+    # the actual migration time; use the FIXED FUNNAI/ICP price (PRE-SNS step 1),
+    # NOT the live pool price; then recompute every amount below. The swap size is DERIVED from the minting deficit at pause
+    # time (see "WHY THE SWAP IS THIS SIZE" above), not a free parameter --
+    # recompute it from the then-current (Scheduled - Minted) deficit plus the
+    # FUNNAI held by the funnAI treasury. The ICP figures follow from the
+    # FUNNAI/ICP price.
+    #
+    # PRE-SNS SEQUENCE (before submitting the NNS proposal / launching).
+    # NOTE: the funnAI protocol is NOT paused here -- mAIning keeps running right
+    # through the launch (proposal, genesis, swap) until the FUNNAI -> ONICAI
+    # switch in the post-genesis sequence. There is no need to pause earlier.
+    #   1. Use a FIXED FUNNAI price, decided now, rather than reading it live
+    #      from the ICPSwap pool. A thin live pool price could be manipulated,
+    #      so we fix the price up front. We use today's FUNNAI price of ~$0.0145;
+    #      converted to FUNNAI/ICP at the ICP price it gives the figure used
+    #      below (0.006241 placeholder). This fixed price sets the swap ceiling
+    #      (maximum_direct_participation_icp) and the LP seed price.
+    #   2. Finalize ALL placeholder values in this file from the current supply
+    #      figures and the minting deficit (the genesis distribution -- team,
+    #      swap, treasury -- is fixed here). Because mAIning keeps running, these
+    #      are a planning estimate: the FINAL Minted / Burned / Circulating
+    #      snapshot that sizes the redemption reserve is taken at the pause in
+    #      the post-genesis sequence.
+    #
+    # POST-GENESIS SEQUENCE (each step is an SNS proposal / protocol action).
+    # ORDER MATTERS: the liquidity pool (step 4) must be created BEFORE any
+    # liquid ONICAI enters circulation (steps 5-7), otherwise someone could
+    # stand up a mis-priced ONICAI/ICP pool first.
+    #   1. Pause the funnAI protocol (mAIning + Bonfire burns) once ready to
+    #      migrate -- this is the FUNNAI -> ONICAI switch point -- and take the
+    #      final Minted / Burned / Circulating snapshot (they stop changing once
+    #      paused). Circulating counts FUNNAI everywhere (wallets, pools, stakes,
+    #      farms), so no pool draining is needed to know the count.
+    #   2. Team members complete their 1:1 swap: each burns the 78_750 FUNNAI
+    #      they pledged, in return for the 78_750 ONICAI held as their genesis
+    #      neurons (4 x 78_750 = 315_000 FUNNAI burned / ONICAI in neurons).
+    #   3. Burn ONICAI = (total FUNNAI Burned) - 315_000
+    #        = (439_011 + 315_000) - 315_000 = 439_011 ONICAI.
+    #      Only the pure Burned (Bonfire) amount shrinks ONICAI supply; the
+    #      team's 315_000 and every later redemption are 1:1 conversions and
+    #      are therefore excluded.
+    #   4. Seed the ONICAI/ICP pool on ICPSwap FIRST: pair the ~1_966 ICP raised
+    #      in the swap (now in the SNS treasury) with 315_000 ONICAI from the
+    #      treasury, at the 0.006241 price. Do this before steps 5-7.
+    #   5. Deliver the advisor allocation: 420_000 ONICAI (2% for Outlier
+    #      Ventures) from the treasury. TODO: investigate delivering this as
+    #      staked NEURONS rather than liquid tokens.
+    #   6. Send ONICAI = Circulating minus the team burn to the redemption
+    #      canister, then holders migrate: each withdraws their FUNNAI from the
+    #      ICPSwap pool / stakes / farms into their own wallet and swaps it 1:1
+    #      for ONICAI at the redemption canister:
+    #        5_562_352 - 315_000 = 5_247_352 ONICAI.
+    #   7. Send the treasury remainder to the funnAI GameState canister, to be
+    #      distributed as mAIning rewards to the mAIners:
+    #        20_370_000 - 439_011 - 315_000 - 420_000 - 5_247_352 = 13_948_637 ONICAI.
+    #   8. Upgrade the funnAI application canisters to use the new ONICAI token
+    #      ledger and index canister.
+    #   9. Upgrade the funnAI application to distribute ONICAI tokens as mAIner
+    #      rewards.
+    #  10. Unpause the funnAI protocol. It now runs fully on the ONICAI token.
+    #
+    # Conservation -- all 21M accounted for:
+    #   team neurons          315_000   (1:1 swap of owned FUNNAI for ONICAI)
+    #   swap                  315_000   (to swap participants, vested neurons)
+    #   burned                439_011   (removed from supply)
+    #   liquidity pool        315_000   (from treasury, paired with raised ICP)
+    #   advisor               420_000   (post-SNS delivery, 2% Outlier Ventures)
+    #   redemption reserve  5_247_352   (for 1:1 swap by current FUNNAI holders)
+    #   GameState (mAIning) 13_948_637
+    #   -----------------------------
+    #   total              21_000_000
+    # Note: the advisor 420_000, the swap 315_000, and the LP 315_000 are fresh
+    # (non-FUNNAI-backed) allocations drawn from the mAIning pool, so GameState
+    # receives correspondingly less than the full unmined amount
+    # (21M - Minted = 14_998_638).
+    #
+    # Redemption canister admin/controller = SNS root / governance, not a team
+    # principal.
+    # =========================================================================
+    #
     # The initial neurons created when the SNS Governance canister is installed.
     # Each element in this list specifies one such neuron, including its stake,
     # controlling principal, memo identifying this neuron (every neuron that
@@ -492,271 +618,174 @@ Distribution:
     #    vesting_period: 4 years
     Neurons:
         # =====================================================================
-        # Developer 1: 5% = 2_625_000 tokens (525_000 per neuron)
+        # onicai team member allocation: 78_750 ONICAI per member
+        # (4 members x 5 neurons x 15_750 = 315_000 ONICAI total).
+        #
+        # The team total is set EQUAL to the swap (315_000) so that the only
+        # genesis (developer) neurons are <= the swap, satisfying the SNS rule
+        # (see the note at the top of this Distribution section).
+        #
+        # Each member receives 78_750 ONICAI in return for pledging 78_750
+        # FUNNAI to be burned once the SNS is in place -- a 1:1 conversion of
+        # their own tokens, at the same rate as every other holder (not a free
+        # grant, not a privileged allocation).
+        #
+        # TODO: confirm each of the 4 team members below is ABLE and WILLING to
+        # pledge 78_750 FUNNAI for burning; adjust or remove any who are not.
+        # TODO: confirm the 4 principals are the correct team-member neuron
+        # controllers.
+        # =====================================================================
+        # Team member 1: 78_750 tokens (15_750 per neuron)
         # =====================================================================
         - principal: fjo26-of3kp-nsqh6-b5dah-3f5ml-d7h6q-vxh23-zru4k-e3xnb-lwrok-iqe
-          stake: 525_000 tokens
+          stake: 15_750 tokens
           memo: 0
           dissolve_delay: 9 months
           vesting_period: 9 months
         - principal: fjo26-of3kp-nsqh6-b5dah-3f5ml-d7h6q-vxh23-zru4k-e3xnb-lwrok-iqe
-          stake: 525_000 tokens
+          stake: 15_750 tokens
           memo: 1
           dissolve_delay: 9 months
           vesting_period: 12 months
         - principal: fjo26-of3kp-nsqh6-b5dah-3f5ml-d7h6q-vxh23-zru4k-e3xnb-lwrok-iqe
-          stake: 525_000 tokens
+          stake: 15_750 tokens
           memo: 2
           dissolve_delay: 9 months
           vesting_period: 15 months
         - principal: fjo26-of3kp-nsqh6-b5dah-3f5ml-d7h6q-vxh23-zru4k-e3xnb-lwrok-iqe
-          stake: 525_000 tokens
+          stake: 15_750 tokens
           memo: 3
           dissolve_delay: 9 months
           vesting_period: 18 months
         - principal: fjo26-of3kp-nsqh6-b5dah-3f5ml-d7h6q-vxh23-zru4k-e3xnb-lwrok-iqe
-          stake: 525_000 tokens
+          stake: 15_750 tokens
           memo: 4
           dissolve_delay: 9 months
           vesting_period: 21 months
 
         # =====================================================================
-        # Developer 2: 5% = 2_625_000 tokens (525_000 per neuron)
+        # Team member 2: 78_750 tokens (15_750 per neuron)
         # =====================================================================
         - principal: 5qylk-t6gh7-5sddx-dkweo-nxyu5-xvpxw-zcwj4-iymoh-k3va4-xx5g2-rqe
-          stake: 525_000 tokens
+          stake: 15_750 tokens
           memo: 0
           dissolve_delay: 9 months
           vesting_period: 9 months
         - principal: 5qylk-t6gh7-5sddx-dkweo-nxyu5-xvpxw-zcwj4-iymoh-k3va4-xx5g2-rqe
-          stake: 525_000 tokens
+          stake: 15_750 tokens
           memo: 1
           dissolve_delay: 9 months
           vesting_period: 12 months
         - principal: 5qylk-t6gh7-5sddx-dkweo-nxyu5-xvpxw-zcwj4-iymoh-k3va4-xx5g2-rqe
-          stake: 525_000 tokens
+          stake: 15_750 tokens
           memo: 2
           dissolve_delay: 9 months
           vesting_period: 15 months
         - principal: 5qylk-t6gh7-5sddx-dkweo-nxyu5-xvpxw-zcwj4-iymoh-k3va4-xx5g2-rqe
-          stake: 525_000 tokens
+          stake: 15_750 tokens
           memo: 3
           dissolve_delay: 9 months
           vesting_period: 18 months
         - principal: 5qylk-t6gh7-5sddx-dkweo-nxyu5-xvpxw-zcwj4-iymoh-k3va4-xx5g2-rqe
-          stake: 525_000 tokens
+          stake: 15_750 tokens
           memo: 4
           dissolve_delay: 9 months
           vesting_period: 21 months
 
         # =====================================================================
-        # Developer 3: 2.5% = 1_312_500 tokens (262_500 per neuron)
+        # Team member 3: 78_750 tokens (15_750 per neuron)
         # =====================================================================
         - principal: nnaww-grw6q-2yklh-zwhj2-pphpw-wdgo6-a7ni3-abkrw-ifbeh-r7r7b-jqe
-          stake: 262_500 tokens
+          stake: 15_750 tokens
           memo: 0
           dissolve_delay: 9 months
           vesting_period: 9 months
         - principal: nnaww-grw6q-2yklh-zwhj2-pphpw-wdgo6-a7ni3-abkrw-ifbeh-r7r7b-jqe
-          stake: 262_500 tokens
+          stake: 15_750 tokens
           memo: 1
           dissolve_delay: 9 months
           vesting_period: 12 months
         - principal: nnaww-grw6q-2yklh-zwhj2-pphpw-wdgo6-a7ni3-abkrw-ifbeh-r7r7b-jqe
-          stake: 262_500 tokens
+          stake: 15_750 tokens
           memo: 2
           dissolve_delay: 9 months
           vesting_period: 15 months
         - principal: nnaww-grw6q-2yklh-zwhj2-pphpw-wdgo6-a7ni3-abkrw-ifbeh-r7r7b-jqe
-          stake: 262_500 tokens
+          stake: 15_750 tokens
           memo: 3
           dissolve_delay: 9 months
           vesting_period: 18 months
         - principal: nnaww-grw6q-2yklh-zwhj2-pphpw-wdgo6-a7ni3-abkrw-ifbeh-r7r7b-jqe
-          stake: 262_500 tokens
+          stake: 15_750 tokens
           memo: 4
           dissolve_delay: 9 months
           vesting_period: 21 months
 
         # =====================================================================
-        # Developer 4: 1% = 525_000 tokens (105_000 per neuron)
+        # Team member 4: 78_750 tokens (15_750 per neuron)
         # =====================================================================
         - principal: lyxu5-lcchc-ux7uo-nkdo7-tq76u-sh2uc-cfhwv-jknbg-wm7wk-sfx5o-cqe
-          stake: 105_000 tokens
+          stake: 15_750 tokens
           memo: 0
           dissolve_delay: 9 months
           vesting_period: 9 months
         - principal: lyxu5-lcchc-ux7uo-nkdo7-tq76u-sh2uc-cfhwv-jknbg-wm7wk-sfx5o-cqe
-          stake: 105_000 tokens
+          stake: 15_750 tokens
           memo: 1
           dissolve_delay: 9 months
           vesting_period: 12 months
         - principal: lyxu5-lcchc-ux7uo-nkdo7-tq76u-sh2uc-cfhwv-jknbg-wm7wk-sfx5o-cqe
-          stake: 105_000 tokens
+          stake: 15_750 tokens
           memo: 2
           dissolve_delay: 9 months
           vesting_period: 15 months
         - principal: lyxu5-lcchc-ux7uo-nkdo7-tq76u-sh2uc-cfhwv-jknbg-wm7wk-sfx5o-cqe
-          stake: 105_000 tokens
+          stake: 15_750 tokens
           memo: 3
           dissolve_delay: 9 months
           vesting_period: 18 months
         - principal: lyxu5-lcchc-ux7uo-nkdo7-tq76u-sh2uc-cfhwv-jknbg-wm7wk-sfx5o-cqe
-          stake: 105_000 tokens
+          stake: 15_750 tokens
           memo: 4
           dissolve_delay: 9 months
           vesting_period: 21 months
-
-        # =====================================================================
-        # Advisor (Outlier Ventures): 2% = 1_050_000 tokens (43_750 per neuron)
-        # 24 neurons with vesting_period: 6 months, dissolve_delay: 0-23 months
-        # =====================================================================
-        - principal: lzvbq-sxpfh-sg4gc-gra6d-i5f2j-lwleo-6if6n-2k7to-lxgty-l32iu-3ae
-          stake: 43_750 tokens
-          memo: 20
-          dissolve_delay: 0 months
-          vesting_period: 6 months
-        - principal: lzvbq-sxpfh-sg4gc-gra6d-i5f2j-lwleo-6if6n-2k7to-lxgty-l32iu-3ae
-          stake: 43_750 tokens
-          memo: 21
-          dissolve_delay: 1 months
-          vesting_period: 6 months
-        - principal: lzvbq-sxpfh-sg4gc-gra6d-i5f2j-lwleo-6if6n-2k7to-lxgty-l32iu-3ae
-          stake: 43_750 tokens
-          memo: 22
-          dissolve_delay: 2 months
-          vesting_period: 6 months
-        - principal: lzvbq-sxpfh-sg4gc-gra6d-i5f2j-lwleo-6if6n-2k7to-lxgty-l32iu-3ae
-          stake: 43_750 tokens
-          memo: 23
-          dissolve_delay: 3 months
-          vesting_period: 6 months
-        - principal: lzvbq-sxpfh-sg4gc-gra6d-i5f2j-lwleo-6if6n-2k7to-lxgty-l32iu-3ae
-          stake: 43_750 tokens
-          memo: 24
-          dissolve_delay: 4 months
-          vesting_period: 6 months
-        - principal: lzvbq-sxpfh-sg4gc-gra6d-i5f2j-lwleo-6if6n-2k7to-lxgty-l32iu-3ae
-          stake: 43_750 tokens
-          memo: 25
-          dissolve_delay: 5 months
-          vesting_period: 6 months
-        - principal: lzvbq-sxpfh-sg4gc-gra6d-i5f2j-lwleo-6if6n-2k7to-lxgty-l32iu-3ae
-          stake: 43_750 tokens
-          memo: 26
-          dissolve_delay: 6 months
-          vesting_period: 6 months
-        - principal: lzvbq-sxpfh-sg4gc-gra6d-i5f2j-lwleo-6if6n-2k7to-lxgty-l32iu-3ae
-          stake: 43_750 tokens
-          memo: 27
-          dissolve_delay: 7 months
-          vesting_period: 6 months
-        - principal: lzvbq-sxpfh-sg4gc-gra6d-i5f2j-lwleo-6if6n-2k7to-lxgty-l32iu-3ae
-          stake: 43_750 tokens
-          memo: 28
-          dissolve_delay: 8 months
-          vesting_period: 6 months
-        - principal: lzvbq-sxpfh-sg4gc-gra6d-i5f2j-lwleo-6if6n-2k7to-lxgty-l32iu-3ae
-          stake: 43_750 tokens
-          memo: 29
-          dissolve_delay: 9 months
-          vesting_period: 6 months
-        - principal: lzvbq-sxpfh-sg4gc-gra6d-i5f2j-lwleo-6if6n-2k7to-lxgty-l32iu-3ae
-          stake: 43_750 tokens
-          memo: 30
-          dissolve_delay: 10 months
-          vesting_period: 6 months
-        - principal: lzvbq-sxpfh-sg4gc-gra6d-i5f2j-lwleo-6if6n-2k7to-lxgty-l32iu-3ae
-          stake: 43_750 tokens
-          memo: 31
-          dissolve_delay: 11 months
-          vesting_period: 6 months
-        - principal: lzvbq-sxpfh-sg4gc-gra6d-i5f2j-lwleo-6if6n-2k7to-lxgty-l32iu-3ae
-          stake: 43_750 tokens
-          memo: 32
-          dissolve_delay: 12 months
-          vesting_period: 6 months
-        - principal: lzvbq-sxpfh-sg4gc-gra6d-i5f2j-lwleo-6if6n-2k7to-lxgty-l32iu-3ae
-          stake: 43_750 tokens
-          memo: 33
-          dissolve_delay: 13 months
-          vesting_period: 6 months
-        - principal: lzvbq-sxpfh-sg4gc-gra6d-i5f2j-lwleo-6if6n-2k7to-lxgty-l32iu-3ae
-          stake: 43_750 tokens
-          memo: 34
-          dissolve_delay: 14 months
-          vesting_period: 6 months
-        - principal: lzvbq-sxpfh-sg4gc-gra6d-i5f2j-lwleo-6if6n-2k7to-lxgty-l32iu-3ae
-          stake: 43_750 tokens
-          memo: 35
-          dissolve_delay: 15 months
-          vesting_period: 6 months
-        - principal: lzvbq-sxpfh-sg4gc-gra6d-i5f2j-lwleo-6if6n-2k7to-lxgty-l32iu-3ae
-          stake: 43_750 tokens
-          memo: 36
-          dissolve_delay: 16 months
-          vesting_period: 6 months
-        - principal: lzvbq-sxpfh-sg4gc-gra6d-i5f2j-lwleo-6if6n-2k7to-lxgty-l32iu-3ae
-          stake: 43_750 tokens
-          memo: 37
-          dissolve_delay: 17 months
-          vesting_period: 6 months
-        - principal: lzvbq-sxpfh-sg4gc-gra6d-i5f2j-lwleo-6if6n-2k7to-lxgty-l32iu-3ae
-          stake: 43_750 tokens
-          memo: 38
-          dissolve_delay: 18 months
-          vesting_period: 6 months
-        - principal: lzvbq-sxpfh-sg4gc-gra6d-i5f2j-lwleo-6if6n-2k7to-lxgty-l32iu-3ae
-          stake: 43_750 tokens
-          memo: 39
-          dissolve_delay: 19 months
-          vesting_period: 6 months
-        - principal: lzvbq-sxpfh-sg4gc-gra6d-i5f2j-lwleo-6if6n-2k7to-lxgty-l32iu-3ae
-          stake: 43_750 tokens
-          memo: 40
-          dissolve_delay: 20 months
-          vesting_period: 6 months
-        - principal: lzvbq-sxpfh-sg4gc-gra6d-i5f2j-lwleo-6if6n-2k7to-lxgty-l32iu-3ae
-          stake: 43_750 tokens
-          memo: 41
-          dissolve_delay: 21 months
-          vesting_period: 6 months
-        - principal: lzvbq-sxpfh-sg4gc-gra6d-i5f2j-lwleo-6if6n-2k7to-lxgty-l32iu-3ae
-          stake: 43_750 tokens
-          memo: 42
-          dissolve_delay: 22 months
-          vesting_period: 6 months
-        - principal: lzvbq-sxpfh-sg4gc-gra6d-i5f2j-lwleo-6if6n-2k7to-lxgty-l32iu-3ae
-          stake: 43_750 tokens
-          memo: 43
-          dissolve_delay: 23 months
-          vesting_period: 6 months
 
     # The initial SNS token balances of the various canisters of the SNS.
+    # The full 21M ONICAI supply is minted at genesis. Everything not held in
+    # genesis neurons or the swap sits in the treasury (see composition below).
     InitialBalances:
         # The initial SNS token balance of the SNS Governance canister is known
         # as the treasury. This is initialized in a special sub-account, as the
         # main account of Governance is the minting account of the SNS Ledger.
-        # 59.5% of 52.5 Million
-        treasury: 31_237_500 tokens
+        #
+        # total - genesis neurons - swap. This entire amount is distributed
+        # post-genesis via SNS proposals: burned, paired with the raised ICP to
+        # seed the ONICAI/ICP liquidity pool, delivered to the advisor (420_000,
+        # 2% Outlier Ventures), sent to the redemption canister, and sent to the
+        # funnAI GameState canister for mAIning rewards. See the distribution
+        # plan at the top of this Distribution section.
+        treasury: 20_370_000 tokens
 
         # The initial SNS token balance of the Swap canister is what will be
         # available for the decentralization swap. These tokens will be swapped
-        # for ICP. 
-        # 25% of 52.5 Million
-        swap: 13_125_000 tokens
+        # for ICP.
+        # 315_000 -- sold in the decentralization swap; participants receive
+        # vested ONICAI neuron baskets. The raised ICP seeds an ONICAI/ICP
+        # liquidity pool (see the distribution plan above).
+        swap: 315_000 tokens
 
     # Checksum of the total number of tokens distributed in this section.
-    # Developer 1 (5 neurons):       2_625_000 tokens ( 5.0%)
-    # Developer 2 (5 neurons):       2_625_000 tokens ( 5.0%)
-    # Developer 3 (5 neurons):       1_312_500 tokens ( 2.5%)
-    # Developer 4 (5 neurons):         525_000 tokens ( 1.0%)
-    # Advisor (24 neurons):          1_050_000 tokens ( 2.0%)
-    # Treasury:                     31_237_500 tokens (59.5%)
-    # Swap (Decentralization Sale): 13_125_000 tokens (25.0%)
+    # Token amounts are exact and sum to 21M; percentages are rounded.
+    # Team member 1 (5 neurons):        78_750 tokens ( 0.38%)
+    # Team member 2 (5 neurons):        78_750 tokens ( 0.38%)
+    # Team member 3 (5 neurons):        78_750 tokens ( 0.38%)
+    # Team member 4 (5 neurons):        78_750 tokens ( 0.38%)
+    # Swap (Decentralization Sale):    315_000 tokens ( 1.50%)
+    # Treasury:                     20_370_000 tokens (97.00%)
+    #   (treasury includes the 420_000 advisor allocation, delivered post-SNS)
     # -------------------------------------------------------
-    # Total:                        52_500_000 tokens (100%)
-    total: 52_500_000 tokens
+    # Total:                        21_000_000 tokens (100%)
+    total: 21_000_000 tokens
 
 # Configuration of the decentralization swap parameters. Choose these parameters
 # carefully, if a decentralization swap fails, the SNS will restore the dapp
@@ -768,13 +797,17 @@ Swap:
     # to the deadline or the maximum target being reached, and if there are less
     # than `minimum_participants` (here, only direct participants are counted),
     # the swap will be committed.
-    minimum_participants: 100
+    minimum_participants: 5
 
     # Minimum amount of ICP from direct participants. This amount is required for
     # the swap to succeed. If this amount is not achieved, the swap will be
     # aborted (instead of committed) when the due date/time occurs.
     # Must be smaller than or equal than `maximum_direct_participation_icp`.
-    minimum_direct_participation_icp: 80_000 tokens
+    # 1 ICP minimum -- no significant lower bound, so the swap cannot fail on a
+    # minimum. Note: the launch price is (ICP raised / 315_000 ONICAI sold), so
+    # an undersubscribed swap seeds the liquidity pool below the FUNNAI price;
+    # only the ceiling (below) is pinned, not the floor.
+    minimum_direct_participation_icp: 1 tokens
 
     # Maximum amount of ICP from direct participants. If this amount is achieved,
     # the swap will finalize immediately, without waiting for the due date/time;
@@ -782,17 +815,38 @@ Swap:
     # direct participants (`minimum_participants`) is reached (otherwise, it
     # would be aborted).
     # Must be at least `min_participants * minimum_direct_participation_icp`.
-    maximum_direct_participation_icp: 300_000 tokens
+    # 1_966 ICP maximum -- this caps the swap-clearing price at the FIXED FUNNAI
+    # price (~$0.0145 = 0.006241 FUNNAI/ICP; see PRE-SNS step 1, set now rather
+    # than read from the manipulable pool). The swap sells a FIXED 315_000
+    # ONICAI, so the price is (ICP raised / 315_000); 315_000 x 0.006241
+    # (FUNNAI/ICP) ~= 1_966 ICP.
+    # We pin the ceiling at par (no premium) so that holders migrating 1:1 get
+    # no launch-day windfall to dump into the thin pool -- which is the classic
+    # cause of post-launch price crashes. The pool is then seeded at this same
+    # price, matching ONICAI to FUNNAI relative to ICP.
+    # TODO: recompute right before the SNS goes live as 315_000 x the fixed
+    # FUNNAI/ICP price (PRE-SNS step 1), NOT the live pool price.
+    maximum_direct_participation_icp: 1_966 tokens
 
     # The minimum amount of ICP that each participant must contribute
     # to participate. This field is specified as a token. For instance,
     # "1 token".
-    minimum_participant_icp: 10 tokens
+    # RATIONALE: the SNS requires this floor to be high enough that each
+    # participant receives enough ONICAI to fund all 8 basket neurons (each
+    # needs >= minimum_creation_stake 50 ONICAI + the 0.1 transaction fee).
+    # The binding inequality is:
+    #   min_participant_icp >= neuron_basket_count
+    #                          * (neuron_minimum_stake + transaction_fee)
+    #                          * max_direct_participation_icp / swap_amount
+    #   = 8 * (50 + 0.1) * (1_966 / 315_000) ~= 2.50 ICP.
+    # We set 3 ICP (rounded up, with margin). TODO: recompute if the basket
+    # count, minimum stake, swap size, or max_direct change before go-live.
+    minimum_participant_icp: 3 tokens
 
     # The maximum amount of ICP that each participant may contribute
     # to participate. This field is specified as a token. For instance,
     # "1 token".
-    maximum_participant_icp: 20_000 tokens
+    maximum_participant_icp: 50 tokens
 
     # The text that swap participants must confirm before they may participate
     # in the swap.
@@ -885,7 +939,7 @@ Swap:
     #   the CreateServiceNervousSystem proposal is executed. This facilitates
     #   testing in an accelerated manner.
     #
-    start_time: 16:00 UTC  # Intentionally commented out for testing.
+    start_time: 16:00 UTC
 
     # The duration of the decentralization swap. When `start_time` is calculated
     # during CreateServiceNervousSystem proposal execution, this `duration` will
