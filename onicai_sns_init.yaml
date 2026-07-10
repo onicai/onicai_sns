@@ -489,8 +489,8 @@ Distribution:
     #     sold at, the reserved ONICAI must equal the sold ONICAI (the price
     #     cancels out), so 630_000 splits 315_000 / 315_000.
     #     * swap sells 315_000 ONICAI -> raises 315_000 x 0.006241 ~= 1_966 ICP
-    #       (0.006241 = current FUNNAI/ICP price); the ICP lands in the SNS
-    #       treasury.
+    #       (0.006241 = the fixed FUNNAI/ICP price, ~$0.0145; see PRE-SNS
+    #       step 1); the ICP lands in the SNS treasury.
     #     * a post-genesis proposal pairs that ~1_966 ICP with 315_000 ONICAI
     #       from the treasury into an ONICAI/ICP pool on ICPSwap, at 0.006241.
     # WHY THE SWAP IS THIS SIZE AND CANNOT GROW: the swap, LP, and advisor
@@ -519,57 +519,67 @@ Distribution:
     #   Minted      = 6_001_362 FUNNAI   (hard cap 21M; Scheduled ~6.9M)
     #   Burned      =   439_011 FUNNAI   (7.3% of Minted)
     #   Circulating = 5_562_352 FUNNAI   (Minted - Burned, rounded to whole tokens)
-    # TODO: refresh Minted / Burned / Circulating and the FUNNAI/ICP price from
-    # myfunnai.app/supply at the actual migration time and recompute every
-    # amount below. The swap size is DERIVED from the minting deficit at pause
+    # TODO: refresh Minted / Burned / Circulating from myfunnai.app/supply at
+    # the actual migration time; use the FIXED FUNNAI/ICP price (PRE-SNS step 1),
+    # NOT the live pool price; then recompute every amount below. The swap size is DERIVED from the minting deficit at pause
     # time (see "WHY THE SWAP IS THIS SIZE" above), not a free parameter --
     # recompute it from the then-current (Scheduled - Minted) deficit plus the
     # FUNNAI held by the funnAI treasury. The ICP figures follow from the
     # FUNNAI/ICP price.
     #
-    # PRE-SNS SEQUENCE (before submitting the NNS proposal / launching):
-    #   1. Pause the funnAI protocol. This freezes mAIning (and Bonfire burns),
-    #      so Minted / Burned / Circulating stop changing and the migration can
-    #      be computed against a stable snapshot.
-    #   2. Record the current FUNNAI/ICP price from the ICPSwap pool BEFORE it is
-    #      drained (step 3 removes the market reference). This price sets the
-    #      swap ceiling (maximum_direct_participation_icp) and the LP seed price.
-    #   3. Instruct the community to withdraw ALL FUNNAI from the ICPSwap
-    #      liquidity pool (and any stakes / farms) into their own wallets, so
-    #      every holder can migrate / redeem 1:1. Allow a withdrawal window.
-    #   4. Take the final Minted / Burned / Circulating snapshot and update ALL
-    #      placeholder values in this file (supply figures, swap size, FUNNAI/ICP
-    #      price, maximum_direct_participation_icp, and every derived amount).
+    # PRE-SNS SEQUENCE (before submitting the NNS proposal / launching).
+    # NOTE: the funnAI protocol is NOT paused here -- mAIning keeps running right
+    # through the launch (proposal, genesis, swap) until the FUNNAI -> ONICAI
+    # switch in the post-genesis sequence. There is no need to pause earlier.
+    #   1. Use a FIXED FUNNAI price, decided now, rather than reading it live
+    #      from the ICPSwap pool. A thin live pool price could be manipulated,
+    #      so we fix the price up front. We use today's FUNNAI price of ~$0.0145;
+    #      converted to FUNNAI/ICP at the ICP price it gives the figure used
+    #      below (0.006241 placeholder). This fixed price sets the swap ceiling
+    #      (maximum_direct_participation_icp) and the LP seed price.
+    #   2. Finalize ALL placeholder values in this file from the current supply
+    #      figures and the minting deficit (the genesis distribution -- team,
+    #      swap, treasury -- is fixed here). Because mAIning keeps running, these
+    #      are a planning estimate: the FINAL Minted / Burned / Circulating
+    #      snapshot that sizes the redemption reserve is taken at the pause in
+    #      the post-genesis sequence.
     #
     # POST-GENESIS SEQUENCE (each step is an SNS proposal / protocol action).
-    # ORDER MATTERS: the liquidity pool (step 3) must be created BEFORE any
-    # liquid ONICAI enters circulation (steps 4-6), otherwise someone could
+    # ORDER MATTERS: the liquidity pool (step 4) must be created BEFORE any
+    # liquid ONICAI enters circulation (steps 5-7), otherwise someone could
     # stand up a mis-priced ONICAI/ICP pool first.
-    #   1. Team members complete their 1:1 swap: each burns the 78_750 FUNNAI
+    #   1. Pause the funnAI protocol (mAIning + Bonfire burns) once ready to
+    #      migrate -- this is the FUNNAI -> ONICAI switch point -- and take the
+    #      final Minted / Burned / Circulating snapshot (they stop changing once
+    #      paused). Circulating counts FUNNAI everywhere (wallets, pools, stakes,
+    #      farms), so no pool draining is needed to know the count.
+    #   2. Team members complete their 1:1 swap: each burns the 78_750 FUNNAI
     #      they pledged, in return for the 78_750 ONICAI held as their genesis
     #      neurons (4 x 78_750 = 315_000 FUNNAI burned / ONICAI in neurons).
-    #   2. Burn ONICAI = (total FUNNAI Burned) - 315_000
+    #   3. Burn ONICAI = (total FUNNAI Burned) - 315_000
     #        = (439_011 + 315_000) - 315_000 = 439_011 ONICAI.
     #      Only the pure Burned (Bonfire) amount shrinks ONICAI supply; the
     #      team's 315_000 and every later redemption are 1:1 conversions and
     #      are therefore excluded.
-    #   3. Seed the ONICAI/ICP pool on ICPSwap FIRST: pair the ~1_966 ICP raised
+    #   4. Seed the ONICAI/ICP pool on ICPSwap FIRST: pair the ~1_966 ICP raised
     #      in the swap (now in the SNS treasury) with 315_000 ONICAI from the
-    #      treasury, at the 0.006241 price. Do this before steps 4-6.
-    #   4. Deliver the advisor allocation: 420_000 ONICAI (2% for Outlier
+    #      treasury, at the 0.006241 price. Do this before steps 5-7.
+    #   5. Deliver the advisor allocation: 420_000 ONICAI (2% for Outlier
     #      Ventures) from the treasury. TODO: investigate delivering this as
     #      staked NEURONS rather than liquid tokens.
-    #   5. Send ONICAI = Circulating minus the team burn to the redemption
-    #      canister, where FUNNAI holders swap their FUNNAI 1:1 for ONICAI:
+    #   6. Send ONICAI = Circulating minus the team burn to the redemption
+    #      canister, then holders migrate: each withdraws their FUNNAI from the
+    #      ICPSwap pool / stakes / farms into their own wallet and swaps it 1:1
+    #      for ONICAI at the redemption canister:
     #        5_562_352 - 315_000 = 5_247_352 ONICAI.
-    #   6. Send the treasury remainder to the funnAI GameState canister, to be
+    #   7. Send the treasury remainder to the funnAI GameState canister, to be
     #      distributed as mAIning rewards to the mAIners:
     #        20_370_000 - 439_011 - 315_000 - 420_000 - 5_247_352 = 13_948_637 ONICAI.
-    #   7. Upgrade the funnAI application canisters to use the new ONICAI token
+    #   8. Upgrade the funnAI application canisters to use the new ONICAI token
     #      ledger and index canister.
-    #   8. Upgrade the funnAI application to distribute ONICAI tokens as mAIner
+    #   9. Upgrade the funnAI application to distribute ONICAI tokens as mAIner
     #      rewards.
-    #   9. Unpause the funnAI protocol. It now runs fully on the ONICAI token.
+    #  10. Unpause the funnAI protocol. It now runs fully on the ONICAI token.
     #
     # Conservation -- all 21M accounted for:
     #   team neurons          315_000   (1:1 swap of owned FUNNAI for ONICAI)
@@ -805,15 +815,17 @@ Swap:
     # direct participants (`minimum_participants`) is reached (otherwise, it
     # would be aborted).
     # Must be at least `min_participants * minimum_direct_participation_icp`.
-    # 1_966 ICP maximum -- this caps the swap-clearing price at the current
-    # FUNNAI price. The swap sells a FIXED 315_000 ONICAI, so the price is
-    # (ICP raised / 315_000); 315_000 x 0.006241 (FUNNAI/ICP) ~= 1_966 ICP.
+    # 1_966 ICP maximum -- this caps the swap-clearing price at the FIXED FUNNAI
+    # price (~$0.0145 = 0.006241 FUNNAI/ICP; see PRE-SNS step 1, set now rather
+    # than read from the manipulable pool). The swap sells a FIXED 315_000
+    # ONICAI, so the price is (ICP raised / 315_000); 315_000 x 0.006241
+    # (FUNNAI/ICP) ~= 1_966 ICP.
     # We pin the ceiling at par (no premium) so that holders migrating 1:1 get
     # no launch-day windfall to dump into the thin pool -- which is the classic
     # cause of post-launch price crashes. The pool is then seeded at this same
     # price, matching ONICAI to FUNNAI relative to ICP.
-    # TODO: recompute right before the SNS goes live as 315_000 x the
-    # then-current FUNNAI/ICP price ratio (see https://myfunnai.app/supply).
+    # TODO: recompute right before the SNS goes live as 315_000 x the fixed
+    # FUNNAI/ICP price (PRE-SNS step 1), NOT the live pool price.
     maximum_direct_participation_icp: 1_966 tokens
 
     # The minimum amount of ICP that each participant must contribute
