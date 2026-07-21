@@ -124,7 +124,7 @@ NnsProposal:
           ONICAI neurons
         * All ICP raised is paired with treasury ONICAI into an ONICAI/ICP
           liquidity pool on ICPSwap, at the current FUNNAI price
-        * No lower bound on ICP, so the swap cannot fail on a minimum
+        * Minimum raise: 15 ICP (5 participants x 3 ICP each)
 
         ## Voting
         * Dissolve delay: min 1 month; bonus 0% (holding, not locking, is rewarded)
@@ -803,11 +803,14 @@ Swap:
     # the swap to succeed. If this amount is not achieved, the swap will be
     # aborted (instead of committed) when the due date/time occurs.
     # Must be smaller than or equal than `maximum_direct_participation_icp`.
-    # 1 ICP minimum -- no significant lower bound, so the swap cannot fail on a
-    # minimum. Note: the launch price is (ICP raised / 315_000 ONICAI sold), so
-    # an undersubscribed swap seeds the liquidity pool below the FUNNAI price;
+    # 15 ICP -- this is the REAL floor rather than a chosen one: the sale cannot
+    # succeed below minimum_participants (5) x minimum_participant_icp (3) = 15,
+    # so declaring anything lower would state something that cannot happen.
+    # (Flagged by Lorimer in the community review.)
+    # Note: the launch price is (ICP raised / 315_000 ONICAI sold), so an
+    # undersubscribed swap seeds the liquidity pool below the FUNNAI price;
     # only the ceiling (below) is pinned, not the floor.
-    minimum_direct_participation_icp: 1 tokens
+    minimum_direct_participation_icp: 15 tokens
 
     # Maximum amount of ICP from direct participants. If this amount is achieved,
     # the swap will finalize immediately, without waiting for the due date/time;
