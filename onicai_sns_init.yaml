@@ -510,14 +510,25 @@ Distribution:
     #     voting-power majority. Steering the DAO relies on the community
     #     FOLLOWING the team neuron (plus the 33% blocking rule) -- the intended
     #     SNS model -- not on out-voting everyone by stake.
-    #   - Minimal liquid ONICAI before the pool is seeded: swap participants
-    #     receive neuron baskets with staggered dissolve delays (0, 3, 6 ... 21
-    #     months), so most of their allocation is locked, and the SNS itself
-    #     seeds the pool at the FUNNAI price. NOTE: the SNS gives the FIRST
-    #     basket neuron a ZERO dissolve delay, so ~1/8 of the swap allocation
-    #     (~39_375 ONICAI) is unlocked at swap close -- this is NOT a full
-    #     guarantee. Seed the pool (post-genesis step 4) as early as possible to
-    #     shrink the window in which someone could stand up a mispriced pool.
+    #   - Liquid ONICAI before the pool is seeded -- what is and is not in our
+    #     control. Swap participants receive neuron baskets with staggered
+    #     dissolve delays (0, 3, 6 ... 21 months), but the SNS ALWAYS gives the
+    #     FIRST basket neuron a ZERO dissolve delay. Verified in the SNS source:
+    #     DissolveDelaySeconds(0) is defined as Dissolved, disburse() gates only
+    #     on that state, minimum_dissolve_delay gates VOTING eligibility only,
+    #     and swap neurons carry no vesting_period. So ~1/8 of the swap
+    #     allocation (~39_375 ONICAI) is disbursable within MINUTES of swap
+    #     finalization. This is unavoidable and is true of EVERY SNS launch.
+    #     Consequence: the FIRST pool price cannot be controlled -- any amount
+    #     of liquid ONICAI is enough to create a pool at an arbitrary price, and
+    #     the DAO cannot respond for at least the 4-day voting period.
+    #     What IS controlled is the far larger tranche: the redemption reserve
+    #     (~5_247_352, ~99% of eventual liquid ONICAI) is released by DAO
+    #     proposal. That is why the pool is seeded in step 4 BEFORE redemption
+    #     opens in step 6 -- that ordering is the real protection. The residual
+    #     ~0.7% can only print in a very shallow pool, which the DAO's deeper
+    #     pool at the fixed price -- and FUNNAI->ONICAI arbitrage once redemption
+    #     opens, capping ONICAI at parity from above -- then correct.
     #
     # The current Minted, Burned and Circulating FUNNAI supply figures are live
     # at:  https://myfunnai.app/supply
