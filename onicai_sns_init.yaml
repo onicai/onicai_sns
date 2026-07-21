@@ -120,8 +120,8 @@ NnsProposal:
         * Neurons' Fund participation: No
 
         ## Decentralization Swap & Liquidity Pool Generation
-        * The swap sells 315,000 ONICAI for ICP; participants receive vested
-          ONICAI neurons
+        * The swap sells 315,000 ONICAI; participants receive neuron
+          baskets with staggered dissolve delays
         * All ICP raised is paired with treasury ONICAI into an ONICAI/ICP
           liquidity pool on ICPSwap, at the current FUNNAI price
         * Minimum raise: 15 ICP (5 participants x 3 ICP each)
@@ -470,7 +470,8 @@ Distribution:
     #                        neurons (see the team neurons below). Set EQUAL to
     #                        the swap so developer tokens <= swap (SNS rule above).
     #   - swap:            315_000  (sold in the decentralization swap;
-    #                        participants receive VESTED ONICAI neuron baskets)
+    #                        participants receive ONICAI neuron baskets with
+    #                        staggered dissolve delays)
     #   - treasury:        20_370_000  (everything else)
     #   The advisor (420_000, 2% for Outlier Ventures) is NOT a genesis neuron;
     #   it is delivered post-SNS from the treasury (see the sequence below).
@@ -509,9 +510,14 @@ Distribution:
     #     voting-power majority. Steering the DAO relies on the community
     #     FOLLOWING the team neuron (plus the 33% blocking rule) -- the intended
     #     SNS model -- not on out-voting everyone by stake.
-    #   - No liquid ONICAI outside the treasury: swap participants receive
-    #     vested neuron baskets (not liquid), and the SNS itself seeds the pool
-    #     at the FUNNAI price, so no one can pre-create a mispriced pool.
+    #   - Minimal liquid ONICAI before the pool is seeded: swap participants
+    #     receive neuron baskets with staggered dissolve delays (0, 3, 6 ... 21
+    #     months), so most of their allocation is locked, and the SNS itself
+    #     seeds the pool at the FUNNAI price. NOTE: the SNS gives the FIRST
+    #     basket neuron a ZERO dissolve delay, so ~1/8 of the swap allocation
+    #     (~39_375 ONICAI) is unlocked at swap close -- this is NOT a full
+    #     guarantee. Seed the pool (post-genesis step 4) as early as possible to
+    #     shrink the window in which someone could stand up a mispriced pool.
     #
     # The current Minted, Burned and Circulating FUNNAI supply figures are live
     # at:  https://myfunnai.app/supply
@@ -583,7 +589,7 @@ Distribution:
     #
     # Conservation -- all 21M accounted for:
     #   team neurons          315_000   (1:1 swap of owned FUNNAI for ONICAI)
-    #   swap                  315_000   (to swap participants, vested neurons)
+    #   swap                  315_000   (to swap participants, neuron baskets)
     #   burned                439_011   (removed from supply)
     #   liquidity pool        315_000   (from treasury, paired with raised ICP)
     #   advisor               420_000   (post-SNS delivery, 2% Outlier Ventures)
@@ -770,8 +776,8 @@ Distribution:
         # available for the decentralization swap. These tokens will be swapped
         # for ICP.
         # 315_000 -- sold in the decentralization swap; participants receive
-        # vested ONICAI neuron baskets. The raised ICP seeds an ONICAI/ICP
-        # liquidity pool (see the distribution plan above).
+        # ONICAI neuron baskets with staggered dissolve delays. The raised ICP
+        # seeds an ONICAI/ICP liquidity pool (see the distribution plan above).
         swap: 315_000 tokens
 
     # Checksum of the total number of tokens distributed in this section.
