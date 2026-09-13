@@ -81,9 +81,9 @@ description: >
     mAIning ends in 2033. To seed the pool, the ICP from the sale is added to
     the ICP the funnAI Protocol Treasury already holds, and the combined amount
     is matched with SNS treasury ONICAI at the initial price of 1 ONICAI =
-    0.0075 ICP. The team's 617,000 genesis ONICAI is not a reward but a
+    0.0075 ICP. The team's 537,000 genesis ONICAI is not a reward but a
     bootstrap for setting up the SNS. Treasury proposals need a 67%
-    supermajority, and 617,000 against the sale's 264,000 is 70.03% --
+    supermajority, and 537,000 against the sale's 230,000 is 70.01% --
     comfortably enough to pass the CRITICAL proposals that create the liquidity
     pool and switch mAIning rewards to ONICAI, even if a single hostile buyer
     took the entire sale and voted no. This majority is only temporary: once
@@ -144,9 +144,9 @@ NnsProposal:
         burning once mAIning ends in 2033. To seed the pool, the ICP from the sale is added to
         the ICP the funnAI Protocol Treasury already holds, and the combined amount is matched
         with SNS treasury ONICAI at the initial price of 1 ONICAI = 0.0075 ICP. The team's
-        617,000 genesis ONICAI is not a reward but a bootstrap for setting up the SNS.
-        Treasury proposals need a 67% supermajority, and 617,000 against the sale's 264,000 is
-        70.03% -- comfortably enough to pass the CRITICAL proposals that create the liquidity
+        537,000 genesis ONICAI is not a reward but a bootstrap for setting up the SNS.
+        Treasury proposals need a 67% supermajority, and 537,000 against the sale's 230,000 is
+        70.01% -- comfortably enough to pass the CRITICAL proposals that create the liquidity
         pool and switch mAIning rewards to ONICAI, even if a single hostile buyer took the
         entire sale and voted no. This majority is only temporary: once FUNNAI holders have
         exercised their 1:1 migration, roughly 5,000,000 ONICAI is in their hands and the
@@ -163,15 +163,15 @@ NnsProposal:
         at launch.
 
         ## Genesis Distribution (20,550,411 ONICAI)
-        * Team neurons: 617,000 (1.22% + 1.22% + 0.41% + 0.16% across 4 members)
+        * Team neurons: 537,000 (1.02% + 1.02% + 0.41% + 0.16% across 4 members)
         * Advisor neurons (Outlier Ventures): 420,000 (2.04%)
-        * Token sale for Liquidity Pool seeding: 264,000 (1.28%)
-        * SNS treasury: 19,249,411 (93.67%)
+        * Token sale for Liquidity Pool seeding: 230,000 (1.12%)
+        * SNS treasury: 19,363,411 (94.22%)
 
         ## Token Sale for Liquidity Pool seeding
         * Minimum 5 participants; 4 ICP minimum and 250 ICP maximum each
-        * ICP collected: minimum 20 ICP, maximum 1,980 ICP
-        * 264,000 ONICAI is sold
+        * ICP collected: minimum 20 ICP, maximum 1,725 ICP
+        * 230,000 ONICAI is sold
         * Each participant receives a basket of 6 neurons of equal stake, with dissolve delays
           of 0, 1, 2, 3, 4 and 5 months
 
@@ -181,7 +181,7 @@ NnsProposal:
         * The Treasury burns matching FUNNAI
 
         ## Non-diluting
-        The team's 617,000 ONICAI, the sale's 264,000 ONICAI and the ONICAI seeded into the
+        The team's 537,000 ONICAI, the sale's 230,000 ONICAI and the ONICAI seeded into the
         liquidity pool are all matched 1:1 by FUNNAI to be burned post-launch -- the team's
         own, and the protocol's own -- so none of these events adds to circulating supply and
         it is non-diluting for existing FUNNAI holders.
@@ -194,7 +194,7 @@ NnsProposal:
         * Initial voting period 4 days, wait-for-quiet extension 1 day
 
         ## Post-Genesis Distribution (via SNS proposals)
-        The treasury will be fully disbursed: 4,971,962 shared between the liquidity pool and
+        The treasury will be fully disbursed: 5,085,962 shared between the liquidity pool and
         1:1 FUNNAI holder redemption, and 14,277,449 to the GameState canister for mAIning
         rewards.
 
@@ -486,24 +486,23 @@ Voting:
 Distribution:
     Neurons:
         # =====================================================================
-        # onicai team neurons: 617_000 ONICAI total:
-        #   member 1   250_000   (5 x 50_000)
-        #   member 2   250_000   (5 x 50_000)
+        # onicai team neurons: 537_000 ONICAI total:
+        #   member 1   210_000   (5 x 42_000)
+        #   member 2   210_000   (5 x 42_000)
         #   member 3    84_000   (5 x 16_800)
         #   member 4    33_000   (5 x  6_600)
         #
-        # The sale is NOT derived from this total. It is fixed at 264_000 by
-        # what the liquidity pool needs: 264_000 x 0.0075 = 1_980 ICP.
+        # The sale IS derived from this total: the largest multiple of 1_000
+        # that still leaves the team above 70% = 230_000, which at 0.0075 is
+        # 1_725 ICP for the pool.
         #
         # A CRITICAL proposal needs a supermajority of MORE THAN 67% of the
         # voting power exercised (proposal.rs majority_decision uses a STRICT
         # >). If every sale participant votes no, the team carries it on its
-        # own votes: 617_000 / 881_000 = 70.03%, which is 26_730 tokens above
-        # the threshold. The earlier 537_000 sat at 67.04% -- only 330 tokens
-        # of headroom, less than the 1_000 rejection_fee that is deducted from
-        # a proposer's voting power until its proposal is adopted. The extra
-        # 80_000 buys room for ~27 such fees, so proposals no longer have to be
-        # submitted strictly one at a time.
+        # own votes: 537_000 / 767_000 = 70.01%, which is 23_110 tokens above
+        # the threshold -- ample against the 1_000 rejection_fee that is
+        # deducted from a proposer's voting power until its proposal is
+        # adopted.
         #
         # Each member receives ONICAI in return for pledging the SAME amount of
         # their own FUNNAI, to be burned once the SNS is in place -- a 1:1
@@ -511,59 +510,59 @@ Distribution:
         #
         # TODO: confirm all four principals are the correct neuron controllers.
         # =====================================================================
-        # Team member 1: 250_000 tokens (50_000 per neuron)
+        # Team member 1: 210_000 tokens (42_000 per neuron)
         # =====================================================================
         - principal: fjo26-of3kp-nsqh6-b5dah-3f5ml-d7h6q-vxh23-zru4k-e3xnb-lwrok-iqe
-          stake: 50_000 tokens
+          stake: 42_000 tokens
           memo: 0
           dissolve_delay: 1 month
           vesting_period: 0 months
         - principal: fjo26-of3kp-nsqh6-b5dah-3f5ml-d7h6q-vxh23-zru4k-e3xnb-lwrok-iqe
-          stake: 50_000 tokens
+          stake: 42_000 tokens
           memo: 1
           dissolve_delay: 2 months
           vesting_period: 0 months
         - principal: fjo26-of3kp-nsqh6-b5dah-3f5ml-d7h6q-vxh23-zru4k-e3xnb-lwrok-iqe
-          stake: 50_000 tokens
+          stake: 42_000 tokens
           memo: 2
           dissolve_delay: 3 months
           vesting_period: 0 months
         - principal: fjo26-of3kp-nsqh6-b5dah-3f5ml-d7h6q-vxh23-zru4k-e3xnb-lwrok-iqe
-          stake: 50_000 tokens
+          stake: 42_000 tokens
           memo: 3
           dissolve_delay: 4 months
           vesting_period: 0 months
         - principal: fjo26-of3kp-nsqh6-b5dah-3f5ml-d7h6q-vxh23-zru4k-e3xnb-lwrok-iqe
-          stake: 50_000 tokens
+          stake: 42_000 tokens
           memo: 4
           dissolve_delay: 5 months
           vesting_period: 0 months
 
         # =====================================================================
-        # Team member 2: 250_000 tokens (50_000 per neuron)
+        # Team member 2: 210_000 tokens (42_000 per neuron)
         # =====================================================================
         - principal: 5qylk-t6gh7-5sddx-dkweo-nxyu5-xvpxw-zcwj4-iymoh-k3va4-xx5g2-rqe
-          stake: 50_000 tokens
+          stake: 42_000 tokens
           memo: 0
           dissolve_delay: 1 month
           vesting_period: 0 months
         - principal: 5qylk-t6gh7-5sddx-dkweo-nxyu5-xvpxw-zcwj4-iymoh-k3va4-xx5g2-rqe
-          stake: 50_000 tokens
+          stake: 42_000 tokens
           memo: 1
           dissolve_delay: 2 months
           vesting_period: 0 months
         - principal: 5qylk-t6gh7-5sddx-dkweo-nxyu5-xvpxw-zcwj4-iymoh-k3va4-xx5g2-rqe
-          stake: 50_000 tokens
+          stake: 42_000 tokens
           memo: 2
           dissolve_delay: 3 months
           vesting_period: 0 months
         - principal: 5qylk-t6gh7-5sddx-dkweo-nxyu5-xvpxw-zcwj4-iymoh-k3va4-xx5g2-rqe
-          stake: 50_000 tokens
+          stake: 42_000 tokens
           memo: 3
           dissolve_delay: 4 months
           vesting_period: 0 months
         - principal: 5qylk-t6gh7-5sddx-dkweo-nxyu5-xvpxw-zcwj4-iymoh-k3va4-xx5g2-rqe
-          stake: 50_000 tokens
+          stake: 42_000 tokens
           memo: 4
           dissolve_delay: 5 months
           vesting_period: 0 months
@@ -757,22 +756,22 @@ Distribution:
     # The full 20_550_411 ONICAI supply is minted at genesis. Everything not held in
     # genesis neurons or the swap sits in the treasury (see composition below).
     InitialBalances:
-        treasury: 19_249_411 tokens
+        treasury: 19_363_411 tokens
 
         # The initial SNS token balance of the Swap canister is what will be
         # available for the decentralization swap. These tokens will be swapped
         # for ICP.
-        swap: 264_000 tokens
+        swap: 230_000 tokens
 
     # Checksum of the total number of tokens distributed in this section.
     # Token amounts are exact and sum to the total; percentages are rounded.
-    # Team member 1 (5 neurons):                     250_000 tokens ( 1.22%)
-    # Team member 2 (5 neurons):                     250_000 tokens ( 1.22%)
+    # Team member 1 (5 neurons):                     210_000 tokens ( 1.02%)
+    # Team member 2 (5 neurons):                     210_000 tokens ( 1.02%)
     # Team member 3 (5 neurons):                      84_000 tokens ( 0.41%)
     # Team member 4 (5 neurons):                      33_000 tokens ( 0.16%)
     # Advisor / Outlier Ventures (24):               420_000 tokens ( 2.04%)
-    # Swap (Sale for Liquidity Pool seeding):        264_000 tokens ( 1.28%)
-    # Treasury:                                   19_249_411 tokens (93.67%)
+    # Swap (Sale for Liquidity Pool seeding):        230_000 tokens ( 1.12%)
+    # Treasury:                                   19_363_411 tokens (94.22%)
     # ---------------------------------------------------------------------
     # Total:                                      20_550_411 tokens (100%)
     #
@@ -805,7 +804,7 @@ Swap:
     # in this case, the swap would be committed if and only if the number of
     # direct participants (`minimum_participants`) is reached (otherwise, it
     # would be aborted).
-    maximum_direct_participation_icp: 1_980 tokens
+    maximum_direct_participation_icp: 1_725 tokens
 
     # The minimum amount of ICP that each participant must contribute
     # to participate. This field is specified as a token. For instance,
