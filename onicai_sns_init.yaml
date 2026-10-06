@@ -74,8 +74,8 @@ description: >
     equal to the ONICAI in their genesis neurons, and the funnAI Protocol
     Treasury burns FUNNAI equal to the ONICAI sold in the token sale and seeded
     into the liquidity pool, before both migrate whatever FUNNAI they still
-    hold. ONICAI will have a hard cap of 21M, and because 449,589 FUNNAI has
-    already been burned, only 20,550,411 is created at launch. Everything --
+    hold. ONICAI will have a hard cap of 21M, and because 449,896 FUNNAI has
+    already been burned, only 20,550,104 is created at launch. Everything --
     migration, pool, future mAIning rewards -- comes out of that. No additional
     ONICAI is ever minted. Supply becomes deflationary through burning once
     mAIning ends in 2033. To seed the pool, the ICP from the sale is added to
@@ -102,6 +102,13 @@ logo: onicai-icon-logo.png
 
 # URL that represents the SNS, usually a dapp controlled by the SNS project.
 # Must be a string from 10 to 512 bytes, and the domain must be HTTPS.
+# See https://github.com/onicai/funnAI/issues/220 for details
+# Currently, the app does not pass a derivation origin, so the URL itself is used.
+# As a result, the trust model for each URL a user uses is as follows:
+# | URL users open	                              | Derivation origin (= principal)	             | Trust                                              |
+# | https://funnai.onicai.com	                    | https://funnai.onicai.com	                   | Relies on centrally controlled DNS for onicai.com. |
+# | https://vizih-uiaaa-aaaaa-qavaa-cai.icp0.io/	| https://vizih-uiaaa-aaaaa-qavaa-cai.icp0.io	 | Only the frontend canister, no custom DNS.         |
+#
 url: https://funnai.onicai.com
 
 # Metadata for the NNS proposal required to create the SNS. This data will be
@@ -115,18 +122,15 @@ NnsProposal:
     # This will go in the `url` field of the proposal.
     # Must be a string of 10 to 2,048 bytes.
     # The protocol must be HTTPS, and the domain must be forum.dfinity.org.
-    # TODO: create a new forum thread and paste its URL here.
-    url: "https://forum.dfinity.org/t/upcoming-onicai-sns-decentralization-swap/61361"
+    url: "https://forum.dfinity.org/t/upcoming-sns-decentralizing-the-funnai-proof-of-ai-work-protocol-into-an-sns/75777"
 
     # The summary of the NNS proposal. The limit is 30,000 bytes
     # (PROPOSAL_SUMMARY_BYTES_MAX). Do NOT confuse it with the 2,000-byte limit
     # on the SNS metadata `description` above (SnsMetadata::MAX_DESCRIPTION_LENGTH).
     # The NNS shows voters this summary, not the description, so it carries the
     # description verbatim plus the parameters a voter needs.
-    # TODO before submission: update the forum-post link, and refresh every
-    # figure from the final FUNNAI snapshot. Read Minted/Burned/Circulating from
-    # https://myfunnai.app/supply, or query the ledger and API canisters
-    # directly if you need e8s precision.
+    # Figures are from the FUNNAI snapshot of 2026-10-06: getTotalBurned
+    # 449,895.715 (rounded up to 449,896), circulating 5,952,125.
     summary: |
         ## onicai SNS
         This SNS decentralizes the funnAI application (https://funnai.onicai.com) by donating
@@ -138,7 +142,7 @@ NnsProposal:
         burns FUNNAI equal to the ONICAI in their genesis neurons, and the funnAI Protocol
         Treasury burns FUNNAI equal to the ONICAI sold in the token sale and seeded into the
         liquidity pool, before both migrate whatever FUNNAI they still hold. ONICAI will have
-        a hard cap of 21M, and because 449,589 FUNNAI has already been burned, only 20,550,411
+        a hard cap of 21M, and because 449,896 FUNNAI has already been burned, only 20,550,104
         is created at launch. Everything -- migration, pool, future mAIning rewards -- comes
         out of that. No additional ONICAI is ever minted. Supply becomes deflationary through
         burning once mAIning ends in 2033. To seed the pool, the ICP from the sale is added to
@@ -155,18 +159,18 @@ NnsProposal:
         naturally through mAIning.
 
         ## Token
-        * Total minted: 20,550,411 ONICAI
+        * Total minted: 20,550,104 ONICAI
         * Transaction fee: 0.1 ONICAI | Proposal rejection fee: 1,000 ONICAI
         * Neurons' Fund participation: No
 
-        The cap is 21M. 449,589 FUNNAI is already burned, so only 20,550,411 ONICAI is created 
+        The cap is 21M. 449,896 FUNNAI is already burned, so only 20,550,104 ONICAI is created 
         at launch.
 
-        ## Genesis Distribution (20,550,411 ONICAI)
+        ## Genesis Distribution (20,550,104 ONICAI)
         * Team neurons: 537,000 (1.02% + 1.02% + 0.41% + 0.16% across 4 members)
         * Advisor neurons (Outlier Ventures): 420,000 (2.04%)
         * Token sale for Liquidity Pool seeding: 230,000 (1.12%)
-        * SNS treasury: 19,363,411 (94.22%)
+        * SNS treasury: 19,363,104 (94.22%)
 
         ## Token Sale for Liquidity Pool seeding
         * Minimum 5 participants; 4 ICP minimum and 250 ICP maximum each
@@ -194,8 +198,8 @@ NnsProposal:
         * Initial voting period 4 days, wait-for-quiet extension 1 day
 
         ## Post-Genesis Distribution (via SNS proposals)
-        The treasury will be fully disbursed: 5,085,962 shared between the liquidity pool and
-        1:1 FUNNAI holder redemption, and 14,277,449 to the GameState canister for mAIning
+        The treasury will be fully disbursed: 5,185,125 shared between the liquidity pool and
+        1:1 FUNNAI holder redemption, and 14,177,979 to the GameState canister for mAIning
         rewards.
 
         ## Learn more
@@ -430,7 +434,7 @@ Voting:
     #
     # More details on SNS tokenomics can be found in the developer documentation:
     # https://internetcomputer.org/docs/current/developer-docs/integrations/sns/tokenomics/rewards/#voting-rewards
-    # No ONICAI voting rewards. ONICAI is capped at 21M, of which 20_550_411 is
+    # No ONICAI voting rewards. ONICAI is capped at 21M, of which 20_550_104 is
     # minted at genesis -- distributed to existing FUNNAI holders, with the
     # remainder rewarded to mAIners per the funnAI minting schedule. There is
     # no token inflation to fund staking rewards. In the future, the community
@@ -507,8 +511,6 @@ Distribution:
         # Each member receives ONICAI in return for pledging the SAME amount of
         # their own FUNNAI, to be burned once the SNS is in place -- a 1:1
         # conversion at the same rate as every other holder.
-        #
-        # TODO: confirm all four principals are the correct neuron controllers.
         # =====================================================================
         # Team member 1: 210_000 tokens (42_000 per neuron)
         # =====================================================================
@@ -753,10 +755,10 @@ Distribution:
           vesting_period: 6 months
 
     # The initial SNS token balances of the various canisters of the SNS.
-    # The full 20_550_411 ONICAI supply is minted at genesis. Everything not held in
+    # The full 20_550_104 ONICAI supply is minted at genesis. Everything not held in
     # genesis neurons or the swap sits in the treasury (see composition below).
     InitialBalances:
-        treasury: 19_363_411 tokens
+        treasury: 19_363_104 tokens
 
         # The initial SNS token balance of the Swap canister is what will be
         # available for the decentralization swap. These tokens will be swapped
@@ -771,15 +773,13 @@ Distribution:
     # Team member 4 (5 neurons):                      33_000 tokens ( 0.16%)
     # Advisor / Outlier Ventures (24):               420_000 tokens ( 2.04%)
     # Swap (Sale for Liquidity Pool seeding):        230_000 tokens ( 1.12%)
-    # Treasury:                                   19_363_411 tokens (94.22%)
+    # Treasury:                                   19_363_104 tokens (94.22%)
     # ---------------------------------------------------------------------
-    # Total:                                      20_550_411 tokens (100%)
+    # Total:                                      20_550_104 tokens (100%)
     #
-    # 20_550_411 = the 21M hard cap MINUS the 449_589 FUNNAI already burned.
+    # 20_550_104 = the 21M hard cap MINUS the 449_896 FUNNAI already burned.
     # Netting the burn out here means no post-genesis burn proposal is needed.
-    # TODO: Verify the total burned amount before finalizing the token distribution.
-    #       getTotalBurned on bgm6p-5aaaa-aaaaf-qbzda-cai
-    total: 20_550_411 tokens
+    total: 20_550_104 tokens
 
 # Configuration of the decentralization swap parameters. Choose these parameters
 # carefully, if a decentralization swap fails, the SNS will restore the dapp
